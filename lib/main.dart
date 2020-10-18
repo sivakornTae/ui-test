@@ -42,75 +42,77 @@ class _LogInPageState extends State<LogInPage> {
             padding: const EdgeInsets.all(30),
             child: Form(
               key: _loginForm,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 80,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage(
-                        'images/coffee-bean-icon.png',
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 80,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage(
+                          'images/coffee-bean-icon.png',
+                        ),
+                        radius: 75,
                       ),
-                      radius: 75,
                     ),
-                  ),
-                  SizedBox(height: 30),
-                  TextFormField(
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Email is required';
-                        }
-                        return null;
-                      },
-                      decoration:
-                          kTextFieldDecoration.copyWith(labelText: 'Email')),
-                  SizedBox(height: 20),
-                  TextFormField(
-                      obscureText: true,
-                      onChanged: (value) {
-                        password = value;
-                      },
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Password is required';
-                        } else if (value.length < 7) {
-                          return 'Password should be contained at least 7 characters.';
-                        }
-                        return null;
-                      },
-                      style: TextStyle(color: Colors.white),
-                      decoration:
-                          kTextFieldDecoration.copyWith(labelText: 'Password')),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  CustomButton(
-                    title: 'LOGIN',
-                    onPressed: () {
-                      if (_loginForm.currentState.validate()) {
-                        print(email);
-                        print(password);
-                        print('login Successed');
-                      }
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Text(
-                      'or',
-                      style: TextStyle(fontSize: 18),
-                      textAlign: TextAlign.center,
+                    SizedBox(height: 30),
+                    TextFormField(
+                        onChanged: (value) {
+                          email = value;
+                        },
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Email is required';
+                          }
+                          return null;
+                        },
+                        decoration:
+                            kTextFieldDecoration.copyWith(labelText: 'Email')),
+                    SizedBox(height: 20),
+                    TextFormField(
+                        obscureText: true,
+                        onChanged: (value) {
+                          password = value;
+                        },
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Password is required';
+                          } else if (value.length < 7) {
+                            return 'Password should be contained at least 7 characters.';
+                          }
+                          return null;
+                        },
+                        style: TextStyle(color: Colors.white),
+                        decoration: kTextFieldDecoration.copyWith(
+                            labelText: 'Password')),
+                    SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  CustomButton(
-                    title: 'REGISTRATION',
-                    onPressed: () {},
-                  )
-                ],
+                    CustomButton(
+                      title: 'LOGIN',
+                      onPressed: () {
+                        if (_loginForm.currentState.validate()) {
+                          print(email);
+                          print(password);
+                          print('login Successed');
+                        }
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text(
+                        'or',
+                        style: TextStyle(fontSize: 18),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    CustomButton(
+                      title: 'REGISTRATION',
+                      onPressed: () {},
+                    )
+                  ],
+                ),
               ),
             ),
           ),
